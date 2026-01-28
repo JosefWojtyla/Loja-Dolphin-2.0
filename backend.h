@@ -1,5 +1,4 @@
 #pragma once
-#include "models.h"
 
 typedef struct Carrinho {
     struct Cliente *cliente;

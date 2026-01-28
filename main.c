@@ -1,6 +1,6 @@
-#include "models.h"
-#include "views.h"
-#include "controller.h"
+#include "frontend.h"
+#include "backend.h"
+#include "persistencia.h"
 
 int main(){
     cliente *head_c;
