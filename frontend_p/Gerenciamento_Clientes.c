@@ -3,57 +3,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
-
-
-void menu_principal(cliente *head_c, produto *head_p){
-    int opcao=-1;
-    while (opcao<1 || opcao>4){
-        printf ("- - - - - - Loja Dolphin - - - - - -\n\n");
-        printf ("1- Gerenciamento clientes.\n");
-        printf ("2- Gerenciamento produtos.\n");
-        printf ("3- Modo Compra.\n");
-        printf ("4- Sair do sistema.\n");
-        printf("Digite a opcao desejada:\n");
-        scanf(" %d\n", &opcao);
-        if (opcao==4){
-            return;
-        }
-        if (opcao<1 || opcao>4){
-            system("cls");
-            printf("\033[4;31mOPCAO INVALIDA. DIGITE NOVAMENTE.\033[4;31m\n\n\n");
-        }
-    }
-    system("cls");
-    if (opcao==1){menu_gerenciamento_clientes(head_c, head_p);};
-    if (opcao==2){menu_gerenciamento_produtos(*head_c, head_p);};
-    if (opcao==3){menu_modo_compra(head_c, head_p);};
-}
 
 void menu_gerenciamento_clientes(head_c, head_p){
     int opcao=-1;
     while (opcao<1 || opcao>4){
-        printf ("- - - - - - Loja Dolphin - - - - - -\n\n");
+        printf ("- - - - - - Gerenciamento de Clientes - - - - - -\n\n");
         printf ("1- Cadastrar cliente.\n");
         printf ("2- Listar clientes.\n");
         printf ("3- Buscar cliente pelo CPF.\n");
         printf ("4- Editar dados de um cliente.\n");
-        printf ("5- Voltar ao menu principal.\n");
+        printf ("5- Remover cliente.\n");
+        printf ("6- Voltar ao menu principal.\n");
         printf("Digite a opcao desejada:\n");
         scanf(" %d\n", &opcao);
-        if (opcao==5){
+        if (opcao==6){
             menu_principal(head_c, head_p);
         }
-        if (opcao<1 || opcao>5){
+        if (opcao<1 || opcao>6){
             system("cls");
-            printf("\033[4;31mOPCAO INVALIDA. DIGITE NOVAMENTE.\033[4;31m\n\n\n");
+            printf("\033[4;31mOPCAO INVALIDA. DIGITE NOVAMENTE.\033[0m\n\n\n");
         }
     }
     system("cls");
-    if (opcao==1){menu_cadastro_cliente(head_c);};
-    if (opcao==2){menu_gerenciamento_produtos(head_p);};
-    if (opcao==3){menu_modo_compra(head_c, head_p);};
+    if (opcao==1){menu_cadastro_cliente(head_c, head_p);};
+    if (opcao==2){listar_cliente(head_c, head_p);};
+    if (opcao==3){menu_buscar_cliente(head_c, head_p);};
+    if (opcao==4){menu_editar_cliente(head_c, head_p);};
+    if (opcao==5){menu_remover_cliente(head_c, head_p);};
 }
+
 
 void menu_cadastrar_turma(turma *lista_turmas, short *qtd_turmas){
     srand(time(NULL));

@@ -1,6 +1,6 @@
-#include "frontend.h"
-#include "backend.h"
-#include "persistencia.h"
+#include "backend_p/backend.h"
+#include "persistencia_p/persistencia.h"
+#include "frontend_p/frontend.h"
 
 int main(){
     cliente *head_c;

@@ -28,7 +28,7 @@ O sistema deve possui um **menu principal** com três opções:
 
 O sistema permite:
 
-- Cadastrar um cliente (CPF, nome e telefone);
+- Cadastrar um cliente (CPF, data de nascimento, email, nome e telefone);
 - Listar todos os clientes;
 - Buscar um cliente pelo seu CPF;
 - Editar dados de um cliente;
@@ -40,7 +40,7 @@ O sistema permite:
 
 O sistema permite:
 
-- Cadastrar um produto (código único, nome e preço);
+- Cadastrar um produto (código único, nome, quantidade e preço);
 - Listar todos os produtos;
 - Buscar produto pelo código;
 - Editar dados de um produto;
