@@ -1,11 +1,10 @@
-#include "menus.h"
-#include "escola.h"
-#include <stdio.h>
+#include "models.h"
+#include "views.h"
+#include "controllers.h"
 
 int main(){
-    turma lista_turmas[10];
-    short *qtd_turmas, num_turmas = 10;
-    qtd_turmas = &num_turmas;
-    menu_principal(lista_turmas, qtd_turmas);
+    cliente *head_c;
+    produto *head_p;
+    menu_principal(head_c, head_p);
     return 0;
 }

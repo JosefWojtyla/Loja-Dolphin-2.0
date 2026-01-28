@@ -1,4 +1,5 @@
-#include "escola.h"
+#include "models.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
