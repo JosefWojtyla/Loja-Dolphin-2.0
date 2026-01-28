@@ -5,17 +5,16 @@ typedef struct Carrinho {
     struct Produto *prox;
 } carrinho;
 
-typedef struct Cliente {
-    char nome[50];
-    char cpf[12];
-    char telefone[12];
-    carrinho *carrinho;
+typedef struct Cliente { 
+    char *nome;
+    char *cpf;
+    char *telefone;
     struct Cliente *prox;
 } cliente;
 
 typedef struct Produto {
-    char id[20];
-    char nome[50];
+    char *id;
+    char *nome;
     double preco;
     struct Produto *prox;
 } produto;
@@ -36,6 +35,3 @@ void editar_produto(produto *produto_editado, char *novo_nome, char *novo_id, do
 
 void remover_clientes(cliente *head_c, cliente *cliente_removido);
 void remover_produtos (produto *head_p, produto *produto_removido);
-
-
-
