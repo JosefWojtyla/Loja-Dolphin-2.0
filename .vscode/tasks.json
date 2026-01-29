@@ -8,12 +8,18 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${fileDirname}\\*.c",
+                "${workspaceFolder}/*.c",
+                "${workspaceFolder}/backend_p/*.c",
+                "${workspaceFolder}/frontend_p/*.c",
+                "${workspaceFolder}/persistencia_p/*.c",
+                "-I${workspaceFolder}/backend_p",
+                "-I${workspaceFolder}/frontend_p",
+                "-I${workspaceFolder}/persistencia_p",
                 "-o",
-                "${fileDirname}\\output\\main.exe"
+                "${workspaceFolder}/output/main.exe"
             ],
             "options": {
-                "cwd": "${fileDirname}"
+                "cwd": "${workspaceFolder}"
             },
             "problemMatcher": [
                 "$gcc"
@@ -22,7 +28,7 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "detail": "Compilador: GCC para todos os arquivos .c"
+            "detail": "Compilador: GCC incluindo todos os subdiretórios e módulos."
         }
     ]
 }

@@ -41,11 +41,11 @@ cliente *buscar_cliente(cliente *head_c, char *cpf){
     cliente *temp_cliente = head_c;
     while (temp_cliente != NULL){
         if (!(strcmp(temp_cliente -> cpf,cpf))){
-        printf("Nome do cliente: %s\n", temp_cliente -> nome);
+        printf("\n\nNome do cliente: %s\n", temp_cliente -> nome);
         printf("CPF: %s\n", temp_cliente -> cpf);
         printf("Telefone: %s\n\n\n\n", temp_cliente -> telefone);
         printf("Email: %s\n\n\n\n", temp_cliente -> email);
-        printf("Data de nascimento: %hd/%hd/%d\n\n\n\n", temp_cliente -> data_nascimento -> dia, temp_cliente -> data_nascimento -> mes, temp_cliente -> data_nascimento -> ano);
+        printf("Data de nascimento: %hd/%hd/%d\n\n", temp_cliente -> data_nascimento -> dia, temp_cliente -> data_nascimento -> mes, temp_cliente -> data_nascimento -> ano);
             return temp_cliente;
         }
         temp_cliente = temp_cliente -> prox;        
@@ -58,19 +58,19 @@ cliente *buscar_cliente(cliente *head_c, char *cpf){
 
 void editar_cliente(cliente *cliente_editado, char *novo_nome, char *novo_cpf, char *novo_telefone, char *novo_email, data *nova_data_nascimento, short opcao){
     if (opcao == 1){
-        strcopy(cliente_editado -> nome, novo_nome);
+        strcpy(cliente_editado -> nome, novo_nome);
         return;
     }
     if (opcao == 2){
-        strcopy(cliente_editado -> cpf, novo_cpf);
+        strcpy(cliente_editado -> cpf, novo_cpf);
         return;
     }  
     if (opcao == 3){
-        strcopy(cliente_editado -> telefone, novo_telefone);
+        strcpy(cliente_editado -> telefone, novo_telefone);
         return;
     }
     if (opcao == 4){
-        strcopy(cliente_editado -> email, novo_email);
+        strcpy(cliente_editado -> email, novo_email);
         return;
     }
     if (opcao == 5){
