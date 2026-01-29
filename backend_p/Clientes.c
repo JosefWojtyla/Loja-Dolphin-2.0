@@ -58,19 +58,19 @@ cliente *buscar_cliente(cliente *head_c, char *cpf){
 
 void editar_cliente(cliente *cliente_editado, char *novo_nome, char *novo_cpf, char *novo_telefone, char *novo_email, data *nova_data_nascimento, short opcao){
     if (opcao == 1){
-        strcopy(cliente_editado -> nome, novo_nome);
+        strcpy(cliente_editado -> nome, novo_nome);
         return;
     }
     if (opcao == 2){
-        strcopy(cliente_editado -> cpf, novo_cpf);
+        strcpy(cliente_editado -> cpf, novo_cpf);
         return;
     }  
     if (opcao == 3){
-        strcopy(cliente_editado -> telefone, novo_telefone);
+        strcpy(cliente_editado -> telefone, novo_telefone);
         return;
     }
     if (opcao == 4){
-        strcopy(cliente_editado -> email, novo_email);
+        strcpy(cliente_editado -> email, novo_email);
         return;
     }
     if (opcao == 5){
