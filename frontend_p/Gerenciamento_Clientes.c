@@ -72,7 +72,7 @@ void menu_buscar_cliente(cliente *head_c, produto *head_p){
     buscar_cliente(head_c, cpf);
     menu_principal(head_c, head_p);    
 }
-
+ 
 void menu_remover_cliente(cliente *head_c, produto *head_p){
     printf("- - - - - - Remover Cliente - - - - - -\n\n");
     printf("Digite o cpf do cliente:\n");

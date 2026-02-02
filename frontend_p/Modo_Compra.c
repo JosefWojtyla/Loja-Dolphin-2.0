@@ -1,5 +1,5 @@
 #include "frontend.h"
-#include "backend_p/backend.h"
+#include "backend.h"
 
 #include <stdio.h>
 #include <stdlib.h>
