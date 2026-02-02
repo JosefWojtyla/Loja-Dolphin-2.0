@@ -16,23 +16,46 @@ void menu_modo_compra(cliente *head_c,produto *head_p){
         return;
     }
 
-    cliente *encontrado; 
+    cliente *encontrado = head_c; 
     char cpf_digitado[12];
     printf("Digite o CPF para comprar:\n");
     scanf(" %[^\n]",cpf_digitado);
-    //while (getchar() != '\n');
+    while (getchar() != '\n');
 
     encontrado = buscar_cliente(head_c,cpf_digitado); 
     
-    if( encontrado != NULL){
-
+    if(encontrado != NULL){
+        int opcao = 0;
         printf("Ola, %s\n", encontrado->nome);
 
-        printf("\n-------- LISTA DOS PRODUTOS --------\n");
-        listar_produtos(head_p);
+        printf("\n-------- ============= --------\n");
+        printf(" 1 - Listar Produtos");
+        printf(" 2 - Adicionar no Carrinho");
+        printf(" 3 - Ver carrinho");
+        printf(" 4 - Retirar do carrinho");
+        printf(" 5 - Voltar ao Menu Principal");
+        scanf(" %d", &opcao);
 
-    } else printf("Cliente nao cadastrado\n");
+        switch (opcao)
+        {
+        case 1:
+            listar_produtos(head_p);
+        case 2:
+            menu_adicionar_carrinho(head_c,head_p);
+            break;
+            break;
+        case 3:
+            menu_mostrar_carrinho(head_c,head_p);
+            break;
+        case 4:
+            menu_retirar_carrinho(head_c,head_p);
+            break;
+        case 5:
+            return;
 
-    printf("\n\nPressione Enter para voltar ao menu...");
-    getchar();
+        default:
+            printf("Opcao invalida");
+            break;
+        }
+    } else printf("Cliente nao encontrado");
 }
