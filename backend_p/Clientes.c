@@ -1,9 +1,5 @@
 #include "backend.h"
 
-#include <stdlib.h> 
-#include <stdio.h>
-#include <string.h>
-
 void cadastrar_cliente(cliente **head_c, char *nome, char *cpf, char *telefone, char *email, data *data_nascimento){
     
     cliente *cliente_novo = malloc (sizeof(cliente));

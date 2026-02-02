@@ -1,9 +1,5 @@
 #include "backend.h"
 
-#include <stdlib.h> 
-#include <stdio.h>
-#include <string.h>
-
 void cadastrar_produto(produto **head_p, char *nome, char *id, double preco, short qtd){
     produto *produto_novo;
     produto_novo = malloc (sizeof(produto)); 

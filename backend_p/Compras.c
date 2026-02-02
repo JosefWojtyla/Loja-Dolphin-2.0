@@ -1,8 +1,6 @@
 #include "backend.h"
 
-#include <stdlib.h> 
-#include <stdio.h>
-#include <string.h>
+
 
 void menu_adicionar_carrinho(cliente *head_c, produto *head_p){
 

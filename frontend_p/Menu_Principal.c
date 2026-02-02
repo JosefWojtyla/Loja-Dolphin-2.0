@@ -7,10 +7,8 @@
 
 
 void menu_principal(cliente *head_c, produto *head_p){
-
-    int opcao = 0;
+    int opcao;
     while (1){
-        /* system("cls"); */
         printf ("- - - - - - Loja Dolphin - - - - - -\n\n");
         printf ("1- Gerenciamento de Clientes.\n");
         printf ("2- Gerenciamento de Produtos.\n");
