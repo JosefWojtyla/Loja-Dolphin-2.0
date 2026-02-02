@@ -63,7 +63,7 @@ void listar_clientes(cliente *head_c){
 
 
 cliente *buscar_cliente(cliente *head_c, char *cpf){
-    if (head_c == NULL) return NULL;
+    /* if (head_c == NULL) return NULL;
 
     cliente *temp_cliente = head_c;
     while (temp_cliente != NULL){
@@ -73,12 +73,29 @@ cliente *buscar_cliente(cliente *head_c, char *cpf){
         printf("Telefone: %s\n", temp_cliente -> telefone);
         printf("Email: %s\n", temp_cliente -> email);
         printf("Data de nascimento: %hd/%hd/%d\n", temp_cliente -> data_nascimento -> dia, temp_cliente -> data_nascimento -> mes, temp_cliente -> data_nascimento -> ano);
+
+
             return temp_cliente;
         }
         temp_cliente = temp_cliente -> prox;        
     } 
     printf("\033[4;31mCliente não encontrado.\033[0m Tecle Enter para voltar.");
     getchar();
+    return NULL; */
+
+    //tentativa josef
+    if (head_c == NULL) return NULL;
+
+    cliente *temp_cliente = head_c;
+    while (temp_cliente != NULL){
+        if (temp_cliente->cpf != NULL && strcmp(temp_cliente->cpf, cpf) == 0){
+
+            return temp_cliente;
+
+        }
+        temp_cliente = temp_cliente -> prox;        
+    } 
+    
     return NULL;
 }
 

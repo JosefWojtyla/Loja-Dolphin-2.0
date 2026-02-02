@@ -76,11 +76,12 @@ void menu_cadastro_cliente(cliente **head_c, produto *head_p){
     data_nascimento -> mes = mes;
     data_nascimento -> ano = ano;
 
-    cadastrar_cliente(head_c, cliente->nome, cliente->cpf, cliente->telefone, cliente->email, data_nascimento);
-
     printf("\nCliente cadastrado com sucesso!\n");
     printf("Pressione uma tecla para sair");
     getchar();
+    
+    cadastrar_cliente(head_c, cliente->nome, cliente->cpf, cliente->telefone, cliente->email, data_nascimento);
+
     return;
 }
 
