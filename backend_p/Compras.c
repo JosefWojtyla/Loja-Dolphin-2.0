@@ -48,7 +48,7 @@ void listar_itens_carrinho(cliente *head_c, produto *head_p){
         return;
     }
     while(item != NULL){
-        printf("- Qtd: %hd | Produto: %s | preco: %.2lf\n", item->qtd,item->produto->nome,item->produto->preco);
+        printf("- COD: %s | Qtd: %hd | Produto: %s | preco: %.2lf\n", item->produto->id, item->qtd , item->produto->nome , item->produto->preco);
 
         item = item->prox;
     }

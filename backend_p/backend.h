@@ -16,6 +16,14 @@ typedef struct Data{
     int ano;
 } data;
 
+typedef struct Produto {
+    char *id;
+    char *nome;
+    short qtd;
+    double preco;
+    struct Produto *prox;
+} produto;
+
 typedef struct ItemCarrinho{
     produto *produto;
     int qtd;
@@ -36,13 +44,7 @@ typedef struct Cliente {
     struct Cliente *prox;
 } cliente;
 
-typedef struct Produto {
-    char *id;
-    char *nome;
-    short qtd;
-    double preco;
-    struct Produto *prox;
-} produto;
+
 
 
 void cadastrar_cliente(cliente **head_c, char *nome, char *cpf, char *telefone, char *email, data *data_nascimento);
