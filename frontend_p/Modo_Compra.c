@@ -66,9 +66,9 @@ void menu_adicionar_carrinho(cliente *head_c, produto *head_p){
     char op = 'S', id[20];
     int qtd = 0;
     
+    listar_produtos(head_p);
+    
     while(op == 'S'){
-
-        listar_produtos(head_p);
 
         printf("Digite o Codigo do produto:\n");
         scanf(" %s", id);
