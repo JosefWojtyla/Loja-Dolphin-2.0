@@ -47,7 +47,7 @@ void listar_produtos (produto *head_p){
         printf("Nome do produto: %s\n", temp_produto -> nome);
         printf("Codigo unico: %s\n", temp_produto -> id);
         printf("Unidades do produto em estoque: %d\n", temp_produto -> qtd);
-        printf("Preco: %.2lf\n\n\n\n", temp_produto -> preco);
+        printf("Preco: %.2lf\n\n", temp_produto -> preco);
         temp_produto = temp_produto -> prox;        
     } 
 }
@@ -59,13 +59,14 @@ produto *buscar_produto(produto *head_p, char *id){
             printf("Nome do produto: %s\n", temp_produto -> nome);
             printf("Codigo unico: %s\n", temp_produto -> id);
             printf("Unidades do produto em estoque: %d\n", temp_produto -> qtd);
-            printf("Preco: %.2lf\n\n\n\n", temp_produto -> preco);
+            printf("Preco: %.2lf\n", temp_produto -> preco);
             return temp_produto;
         }
         temp_produto = temp_produto -> prox;        
     } 
     printf("\033[4;31mProduto não encontrado.\033[0m Tecle Enter para voltar.");
     getchar();
+    system("cls");
     return NULL;
 }
 

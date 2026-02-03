@@ -59,8 +59,7 @@ void menu_cadastro_cliente(cliente **head_c, produto *head_p){
     printf("Digite o email do cliente:\n");
     scanf(" %[^\n]", email); 
     printf("Digite a data de nascimento do cliente (formato DD/MM/AAAA):\n");
-    short dia, mes;
-    int ano;
+
     scanf("%hd/%hd/%d", &dia, &mes, &ano);
 
     data *data_nascimento = malloc(sizeof(data));
@@ -69,6 +68,7 @@ void menu_cadastro_cliente(cliente **head_c, produto *head_p){
     data_nascimento->ano = ano;
 
     cadastrar_cliente(head_c, nome, cpf, telefone, email, data_nascimento);
+    system("cls");
     return;
 }
 
@@ -89,7 +89,7 @@ void menu_buscar_cliente(cliente *head_c, produto *head_p){
 
     printf("Pressione qualquer tecla para voltar...");
     while (getchar() != '\n'); getchar();
-
+    //system("cls");
     return;  
 }
 
@@ -101,6 +101,7 @@ void menu_remover_cliente(cliente **head_c, produto *head_p){
     scanf(" %[^\n]", cpf);
     cliente *cliente_removido = buscar_cliente(*head_c, cpf);
     remover_clientes(head_c, cliente_removido);
+    //system("cls");
     return; 
 }
 
@@ -127,9 +128,10 @@ void menu_editar_cliente(cliente *head_c, produto *head_p){
         printf ("3- Editar telefone.\n");
         printf ("4- Editar email.\n");
         printf ("5- Editar data de nascimento.\n");
+        printf ("6- Sair/Finalizar.\n");
         printf("Digite a opcao desejada:\n");
         scanf(" %d", &opcao);
-
+        while(getchar() != '\n');
         switch(opcao){
             case 1:
                 printf("Qual o novo nome?\n");
@@ -156,7 +158,9 @@ void menu_editar_cliente(cliente *head_c, produto *head_p){
                 temp_cliente -> data_nascimento-> dia = dia;
                 temp_cliente -> data_nascimento-> mes = mes;
                 temp_cliente -> data_nascimento-> ano = ano;
-
+                break;
+            case 6:
+                return;
             default:
                 system("cls");
                 printf(VERDE"Opcao invalida! Digite novamente.\n\n"BRANCO);
@@ -165,6 +169,7 @@ void menu_editar_cliente(cliente *head_c, produto *head_p){
     }
 
     editar_cliente(temp_cliente, temp_cliente -> nome, temp_cliente -> cpf, temp_cliente -> telefone, temp_cliente -> email, temp_cliente -> data_nascimento, opcao);
+    //system("cls");
     return;  
 }
 
