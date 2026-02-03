@@ -83,7 +83,7 @@ void menu_buscar_cliente(cliente *head_c, produto *head_p){
     return;  
 }
 
-void menu_remover_produto(cliente *head_p, produto **head_p){
+void menu_remover_produto(cliente *head_c, produto **head_p){
     printf("- - - - - - Remover Produto - - - - - -\n\n");
     printf("Digite o codigo unico do produto:\n");
     char id[12];
@@ -94,65 +94,46 @@ void menu_remover_produto(cliente *head_p, produto **head_p){
     return;
 }
 
-void menu_editar_cliente(cliente *head_c, produto *head_p){
-
+void menu_editar_produto(cliente *head_c, produto *head_p){
     printf("- - - - - - Editar Produto - - - - - -\n\n");
     printf("Digite o codigo unico do produto a ser editado:\n");
-
-    char nome[100], id[6];
-    short data()
+    char id[6];
     scanf(" %[^\n]", id);
 
-    cliente *temp_cliente = buscar_cliente(head_c, cpf);
-    strcpy (nome, temp_cliente -> nome);
-    strcpy (telefone, temp_cliente -> telefone);
-    strcpy (email, temp_cliente -> email);
-    data *data_nascimento = temp_cliente -> data_nascimento;
+    produto *temp_produto = buscar_produto(head_p, id);
 
-
-    printf("\n\nNome do cliente: %s\n", temp_cliente -> nome);
-    printf("CPF: %s\n", temp_cliente -> cpf);
-    printf("Telefone: %s\n", temp_cliente -> telefone);
-    printf("Email: %s\n", temp_cliente -> email);
-    printf("Data de nascimento: %hd/%hd/%d\n\n", temp_cliente -> data_nascimento -> dia, temp_cliente -> data_nascimento -> mes, temp_cliente -> data_nascimento -> ano);
-
-
+    printf("\n\nNome do produto: %s\n", temp_produto -> nome);
+    printf("Codigo unico: %s\n", temp_produto -> id);
+    printf("Preco por unidade do produto: %.2lf\n", temp_produto -> preco);
+    printf("Quantidade de itens em estoque: %hd\n", temp_produto -> qtd);
+    printf("Pressione qualquer tecla para voltar...");
+  
     int opcao;
     while (SIM){
         printf ("1- Editar nome.\n");
-        printf ("2- Editar cpf.\n");
-        printf ("3- Editar telefone.\n");
-        printf ("4- Editar email.\n");
-        printf ("5- Editar data de nascimento.\n");
+        printf ("2- Editar codigo unico.\n");
+        printf ("3- Editar preco.\n");
+        printf ("4- Editar quantidade de itens em estoque.\n");
         printf("Digite a opcao desejada:\n");
         scanf(" %d", &opcao);
 
         switch(opcao){
             case 1:
                 printf("Qual o novo nome?\n");
-                scanf("%[^\n]",nome);
+                scanf("%[^\n]", temp_produto -> nome);
                 break;
             case 2:
-                printf("Qual o novo cpf?\n");
-                scanf("%[^\n]", cpf);
+                printf("Qual o novo codigo unico do produto?\n");
+                scanf("%[^\n]", temp_produto -> id);
                 break;
             case 3:
-                printf("Qual o novo telefone?\n");
-                scanf("%[^\n]", telefone);
+                printf("Qual o novo preco?\n");
+                scanf("%.2lf", temp_produto -> preco);
                 break;
             case 4:
-                printf("Qual o novo email?\n");
-                scanf("%[^\n]", email);
+                printf("Qual a nova quantidade de itens em estoque?\n");
+                scanf("%hd", temp_produto ->qtd);
                 break;
-            case 5:
-                printf("Digite a data de nascimento do cliente (formato DD/MM/AAAA):\n");
-                short dia, mes;
-                int ano;
-                scanf("%hd/%hd/%d", &dia, &mes, &ano);
-
-                data_nascimento->dia = dia;
-                data_nascimento->mes = mes;
-                data_nascimento->ano = ano;
 
             default:
                 system("cls");
@@ -161,7 +142,7 @@ void menu_editar_cliente(cliente *head_c, produto *head_p){
         } 
     }
 
-    editar_cliente(temp_cliente, nome, cpf, telefone, email, data_nascimento, opcao);
+    editar_produto(temp_produto, temp_produto -> nome, temp_produto -> id, temp_produto -> preco, temp_produto -> qtd, opcao);
     return;  
 }
 

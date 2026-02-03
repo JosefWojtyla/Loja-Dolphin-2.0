@@ -109,14 +109,9 @@ void menu_editar_cliente(cliente *head_c, produto *head_p){
     printf("- - - - - - Editar Cliente - - - - - -\n\n");
     printf("Digite o cpf do cliente a ser editado:\n");
 
-    char nome[100], cpf[12], telefone [12], email[50];
+    char cpf[12];
     scanf(" %[^\n]", cpf);
     cliente *temp_cliente = buscar_cliente(head_c, cpf);
-    strcpy (nome, temp_cliente -> nome);
-    strcpy (telefone, temp_cliente -> telefone);
-    strcpy (email, temp_cliente -> email);
-    data *data_nascimento = temp_cliente -> data_nascimento;
-
 
     printf("\n\nNome do cliente: %s\n", temp_cliente -> nome);
     printf("CPF: %s\n", temp_cliente -> cpf);
@@ -138,19 +133,19 @@ void menu_editar_cliente(cliente *head_c, produto *head_p){
         switch(opcao){
             case 1:
                 printf("Qual o novo nome?\n");
-                scanf("%[^\n]",nome);
+                scanf("%[^\n]", temp_cliente ->nome);
                 break;
             case 2:
                 printf("Qual o novo cpf?\n");
-                scanf("%[^\n]", cpf);
+                scanf("%[^\n]", temp_cliente -> cpf);
                 break;
             case 3:
                 printf("Qual o novo telefone?\n");
-                scanf("%[^\n]", telefone);
+                scanf("%[^\n]", temp_cliente -> telefone);
                 break;
             case 4:
                 printf("Qual o novo email?\n");
-                scanf("%[^\n]", email);
+                scanf("%[^\n]", temp_cliente -> email);
                 break;
             case 5:
                 printf("Digite a data de nascimento do cliente (formato DD/MM/AAAA):\n");
@@ -158,9 +153,9 @@ void menu_editar_cliente(cliente *head_c, produto *head_p){
                 int ano;
                 scanf("%hd/%hd/%d", &dia, &mes, &ano);
 
-                data_nascimento->dia = dia;
-                data_nascimento->mes = mes;
-                data_nascimento->ano = ano;
+                temp_cliente -> data_nascimento-> dia = dia;
+                temp_cliente -> data_nascimento-> mes = mes;
+                temp_cliente -> data_nascimento-> ano = ano;
 
             default:
                 system("cls");
@@ -169,7 +164,7 @@ void menu_editar_cliente(cliente *head_c, produto *head_p){
         } 
     }
 
-    editar_cliente(temp_cliente, nome, cpf, telefone, email, data_nascimento, opcao);
+    editar_cliente(temp_cliente, temp_cliente -> nome, temp_cliente -> cpf, temp_cliente -> telefone, temp_cliente -> email, temp_cliente -> data_nascimento, opcao);
     return;  
 }
 
