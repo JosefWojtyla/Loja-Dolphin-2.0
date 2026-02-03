@@ -1,6 +1,6 @@
 #include "frontend.h"
 
-void menu_gerenciamento_clientes(cliente **head_c, produto **head_p){
+void menu_gerenciamento_produtos(cliente **head_c, produto **head_p){
     int opcao;
     while (SIM){
         printf ("- - - - - - Gerenciamento de Produtos - - - - - -\n\n");
@@ -12,7 +12,8 @@ void menu_gerenciamento_clientes(cliente **head_c, produto **head_p){
         printf ("6- Voltar ao menu principal.\n");
         printf("Digite a opcao desejada:\n");
         scanf(" %d", &opcao);
-        
+        while(getchar() != '\n');
+
         switch (opcao)
         {
         case 1:
@@ -56,15 +57,15 @@ void menu_cadastro_produto(cliente *head_c, produto **head_p){
     printf("Digite o codigo unico do produto:\n");
     scanf(" %[^\n]", id);  
     printf("Digite o preco do produto:\n");
-    scanf(" %.2lf", preco); 
+    scanf(" %lf", &preco); 
     printf("Digite a quantidade de itens em estoque:\n");
-    scanf(" %hd", qtd);
+    scanf(" %hd", &qtd);
 
     cadastrar_produto(head_p, nome, id, preco, qtd);
     return;
 }
 
-void menu_buscar_cliente(cliente *head_c, produto *head_p){
+void menu_buscar_produto(cliente *head_c, produto *head_p){
     printf("- - - - - - Buscar Produto - - - - - -\n\n");
     printf("Digite o codigo unico do produto:\n");
 
@@ -116,6 +117,7 @@ void menu_editar_produto(cliente *head_c, produto *head_p){
         printf ("4- Editar quantidade de itens em estoque.\n");
         printf("Digite a opcao desejada:\n");
         scanf(" %d", &opcao);
+        while(getchar() != '\n');
 
         switch(opcao){
             case 1:
