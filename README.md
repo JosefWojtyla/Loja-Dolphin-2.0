@@ -1,6 +1,6 @@
 
 # Gerenciador_Notas
-Sistema de gerenciamento de notas acadêmicas desenvolvido em C. Implementa manipulação de arquivos binários/texto e uso de structs para persistência de dados
+Sistema de gerenciamento de notas acadêmicas desenvolvido em C. 
 
 # Trabalho Prático — Listas Encadeadas em C
 
@@ -66,6 +66,4 @@ O sistema permite:
 - **Sem** o uso de variáveis globais;
 - Manipulação das listas por **passagem de parâmetros**;
 - Menu funcional via terminal;
-
-- Implementação de persistência de dados via arquivos CSV
 
