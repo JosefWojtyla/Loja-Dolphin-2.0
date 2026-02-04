@@ -14,11 +14,23 @@ void cadastrar_produto(produto **head_p, char *nome, char *id, double preco, sho
     produto_novo -> prox = *head_p;
     *head_p = produto_novo;
 
+    system("cls");
+    printf(VERDE "Produto cadastrado com sucesso!\n\n" BRANCO);
+    printf("Tecle Enter para voltar...\n");
+    while (getchar() != '\n');
+    getchar();
+    system("cls");
     return;
 }
 
 void remover_produtos (produto **head_p, produto *produto_removido){
-    if(*head_p == NULL || produto_removido == NULL) return;
+    if(*head_p == NULL || produto_removido == NULL){
+        printf(VERMELHO "Erro: Produto nao encontrado na lista.\n" BRANCO);
+        printf("Tecle ENTER para voltar...\n");
+        while (getchar() != '\n');
+        getchar();
+        return;
+    }
 
     if(*head_p == produto_removido){
         
@@ -39,9 +51,31 @@ void remover_produtos (produto **head_p, produto *produto_removido){
     free (produto_removido->nome);
     free (produto_removido->id);
     free (produto_removido);
+
+    printf(VERDE "Produto removido com sucesso!\n" BRANCO);
+    printf("Tecle ENTER para voltar...\n");
+    while (getchar() != '\n');
+    getchar();
+    system("cls");
+    return;
 }
 
 void listar_produtos (produto *head_p){
+
+    system("cls");
+    printf(ROXO "- - - - - - Lista de Produtos - - - - - -\n\n" BRANCO);
+
+    if (head_p == NULL)
+    {
+        system("cls");
+        printf(VERMELHO "Erro: Nao ha produtos cadastrados\n\n" BRANCO);
+        printf("Tecle ENTER para voltar...\n");
+        while (getchar() != '\n');
+        getchar();
+        system("cls");
+        return;
+    }
+
     produto *temp_produto = head_p;
     while (temp_produto != NULL){
         printf("Nome do produto: %s\n", temp_produto -> nome);
@@ -50,18 +84,23 @@ void listar_produtos (produto *head_p){
         printf("Preco: %.2lf\n\n", temp_produto -> preco);
         temp_produto = temp_produto -> prox;        
     } 
+
+    printf("Tecle ENTER para voltar...\n");
+    while (getchar() != '\n');
+    getchar();
+    system("cls");
 }
 
 produto *buscar_produto(produto *head_p, char *id){
+
+    if (head_p == NULL) return NULL;
+
     produto *temp_produto = head_p;
+
     while (temp_produto != NULL){
-        if (!(strcmp(temp_produto -> id,id))){
-            printf("Nome do produto: %s\n", temp_produto -> nome);
-            printf("Codigo unico: %s\n", temp_produto -> id);
-            printf("Unidades do produto em estoque: %d\n", temp_produto -> qtd);
-            printf("Preco: %.2lf\n", temp_produto -> preco);
-            return temp_produto;
-        }
+
+        if(temp_produto->id != NULL && strcmp(temp_produto -> id, id) == 0) return temp_produto;
+        
         temp_produto = temp_produto -> prox;        
     } 
     printf("\033[4;31mProduto não encontrado.\033[0m Tecle Enter para voltar.");
