@@ -26,6 +26,7 @@ void menu_gerenciamento_produtos(cliente **head_c, produto **head_p){
             break;
         case 3:
             listar_produtos(*head_p);
+            enter();
             break;
         case 4:
             system("cls"); 

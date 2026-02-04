@@ -1,10 +1,4 @@
 #include "frontend.h"
-void enter(){
-    printf("Tecle ENTER para voltar...\n");
-    while (getchar() != '\n');
-    getchar();
-    system("cls");
-}
 
 void menu_modo_compra(cliente *head_c,produto *head_p){
     system("cls");
@@ -65,7 +59,6 @@ void menu_modo_compra(cliente *head_c,produto *head_p){
         return;
     } 
 }
-
 
 void menu_adicionar_carrinho(cliente *head_c, produto *head_p){
     printf(ROXO" - - - - - MENU ADICIONAR PRODUTOS NO CARRINHO - - - - - \n\n"BRANCO);
