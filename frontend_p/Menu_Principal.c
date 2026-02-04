@@ -1,6 +1,6 @@
 #include "frontend.h"
 
-void menu_principal(cliente *head_c, produto *head_p){
+void menu_principal(cliente **head_c, produto **head_p){
     system("cls");
     int opcao;
     while (SIM){
@@ -16,15 +16,15 @@ void menu_principal(cliente *head_c, produto *head_p){
         switch (opcao){
         case 1:
             system("cls");
-            menu_gerenciamento_clientes(&head_c,&head_p);
+            menu_gerenciamento_clientes(head_c,head_p);
             break;
         case 2:
             system("cls");
-            menu_gerenciamento_produtos(&head_c,&head_p);
+            menu_gerenciamento_produtos(head_c,head_p);
             break;
         case 3:
             system("cls");
-            menu_modo_compra(head_c, head_p);
+            menu_modo_compra(*head_c, *head_p);
             break;
         case 4:
             system("cls");

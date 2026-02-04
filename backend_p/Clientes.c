@@ -80,7 +80,7 @@ void remover_clientes(cliente **head_c, cliente *cliente_removido) {
         free(cliente_removido->telefone);
         free(cliente_removido->email);  
         free(cliente_removido->data_nascimento); 
-        //free(cliente_removido->carrinho); 
+        free_carrinho(cliente_removido->carrinho);
         free(cliente_removido);
         printf(VERDE "Cliente removido com sucesso!\n" BRANCO);
     }
