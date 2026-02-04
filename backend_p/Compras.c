@@ -2,16 +2,27 @@
 
 void adicionar_carrinho(cliente *head_c, produto *head_p, char *id, int qtd){
     
-    if(qtd <= 0 ) return;
-
     produto *achar_produto = head_p;
 
+    if(qtd <= 0 ) return;
+    
     while(achar_produto != NULL && strcmp(achar_produto->id, id) != 0 ){
         achar_produto = achar_produto->prox;
 
     }
 
     if(achar_produto == NULL) return;
+
+    if(achar_produto->qtd < qtd){
+
+        printf("Quantidade nao suficiente no estoque.\n");
+        printf("Disponivel: %d\n", achar_produto->qtd);
+        printf("Tecle ENTER para voltar...\n");
+        while (getchar() != '\n');
+        getchar();
+        return;
+
+    }
 
     itemcarrinho *item_ja_existe = head_c->carrinho->itens;
 
@@ -20,6 +31,7 @@ void adicionar_carrinho(cliente *head_c, produto *head_p, char *id, int qtd){
         if(item_ja_existe->produto == achar_produto){
 
             item_ja_existe->qtd += qtd;
+            achar_produto->qtd -= qtd;
             return;
 
         }
@@ -34,6 +46,7 @@ void adicionar_carrinho(cliente *head_c, produto *head_p, char *id, int qtd){
     novo_item->prox = head_c->carrinho->itens;
     head_c->carrinho->itens = novo_item;
 
+    achar_produto->qtd -= qtd;
 }
 
 void listar_itens_carrinho(cliente *head_c, produto *head_p){
@@ -42,7 +55,7 @@ void listar_itens_carrinho(cliente *head_c, produto *head_p){
 
     if(item == NULL){
         printf("Carrinho vazio. Adicione um item. \n");
-        printf("Pressione qualquer tecla para voltar...\n");
+        printf("Tecle ENTER para voltar...\n");
         while (getchar() != '\n');
         getchar();
         return;
@@ -52,6 +65,10 @@ void listar_itens_carrinho(cliente *head_c, produto *head_p){
 
         item = item->prox;
     }
+    
+    printf("Tecle ENTER para voltar...\n");
+    while (getchar() != '\n');
+    getchar();
     return;
 }
 
@@ -63,7 +80,7 @@ void retirar_carrinho(cliente *head_c, produto *head_p, char *id, int qtd){
 
     if(item == NULL){
         printf("Carrinho vazio. Adicione um item. \n");
-        printf("Pressione qualquer tecla para voltar...\n");
+        printf("Tecle ENTER para voltar...\n");
         while (getchar() != '\n');
         getchar();
         return;
@@ -87,6 +104,7 @@ void retirar_carrinho(cliente *head_c, produto *head_p, char *id, int qtd){
 
             if(atual->qtd > qtd){
                 atual->qtd -= qtd;
+                achar_produto->qtd += qtd;
             } else {
                 if(anterior == NULL){
                     head_c->carrinho->itens = atual->prox;
