@@ -29,6 +29,7 @@ void remover_produtos (produto **head_p, produto *produto_removido){
         printf("Tecle ENTER para voltar...\n");
         while (getchar() != '\n');
         getchar();
+        system("cls");
         return;
     }
 
