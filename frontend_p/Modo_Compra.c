@@ -6,7 +6,7 @@ void menu_modo_compra(cliente *head_c,produto *head_p){
 
     if(head_c == NULL) {
         printf(VERMELHO"Erro: Nao ha clientes cadastrados no momento!\n\n"BRANCO);
-        printf("Pressione qualquer tecla para voltar ao menu principal.\n");
+        printf("Tecle ENTER para voltar ao menu principal.\n");
         while (getchar() != '\n'); getchar();
         system("cls");
         return;
@@ -24,7 +24,7 @@ void menu_modo_compra(cliente *head_c,produto *head_p){
         system("cls");
         int opcao = 0;
 
-        printf("\n--- MODO COMPRA --> Perfil (%s) <-----\n", encontrado->nome);
+        printf(ROXO"\n--- MODO COMPRA --> Perfil (%s) <-----\n"BRANCO, encontrado->nome);
         printf(" 1 - Adicionar produto no Carrinho\n");
         printf(" 2 - Mostar carrinho\n");
         printf(" 3 - Remover produto do carrinho\n");
@@ -53,8 +53,8 @@ void menu_modo_compra(cliente *head_c,produto *head_p){
         }
     } else{
         system("cls");
-        printf("Cliente nao encontrado\n");
-        printf("Pressione qualquer tecla para voltar...");
+        printf(VERMELHO"Cliente nao encontrado\n"BRANCO);
+        printf("Tecle ENTER para voltar...");
         while (getchar() != '\n'); getchar();
         return;
     } 
@@ -63,7 +63,7 @@ void menu_modo_compra(cliente *head_c,produto *head_p){
 
 void menu_adicionar_carrinho(cliente *head_c, produto *head_p){
 
-    printf(" - - - - - MENU ADICIONAR PRODUTOS NO CARRINHO - - - - - \n");
+    printf(ROXO" - - - - - MENU ADICIONAR PRODUTOS NO CARRINHO - - - - - \n"BRANCO);
     char op = 'S', id[20];
     int qtd = 0;
     
@@ -87,13 +87,13 @@ void menu_adicionar_carrinho(cliente *head_c, produto *head_p){
 
 void menu_mostrar_carrinho(cliente *head_c, produto *head_p){
 
-    printf(" - - - - - MENU MOSTRAR PRODUTOS DO CARRINHO - - - - - \n");
+    printf(ROXO" - - - - - MENU MOSTRAR PRODUTOS DO CARRINHO - - - - - \n"BRANCO);
 
     printf("Carrindo de %s\n", head_c->nome);
 
     listar_itens_carrinho(head_c,head_p);
 
-    printf("Pressione qualquer tecla para voltar...\n");
+    printf("Tecle ENTER para voltar...\n");
     while (getchar() != '\n');
     getchar();
     return;
@@ -105,7 +105,7 @@ void menu_retirar_carrinho(cliente *head_c, produto *head_p){
     char op = 'S', id[20];
     int qtd = 0;
 
-    printf(" - - - - - MENU RETIRAR PRODUTOS DO CARRINHO - - - - - \n");
+    printf(ROXO" - - - - - MENU RETIRAR PRODUTOS DO CARRINHO - - - - - \n"BRANCO);
 
     printf("Carrindo de %s\n", head_c->nome);
 
@@ -127,6 +127,6 @@ void menu_retirar_carrinho(cliente *head_c, produto *head_p){
         scanf("%c", &op);
     }
     
-    printf("Carrinho atualizado: \n\n");
+    printf(VERDE"Carrinho atualizado: \n\n"BRANCO);
     listar_itens_carrinho(head_c,head_p);
 }

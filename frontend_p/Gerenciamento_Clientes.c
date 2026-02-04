@@ -68,12 +68,24 @@ void menu_cadastro_cliente(cliente **head_c, produto *head_p){
     data_nascimento->ano = ano;
 
     cadastrar_cliente(head_c, nome, cpf, telefone, email, data_nascimento);
-    system("cls");
+
     return;
 }
 
+void menu_remover_cliente(cliente **head_c, produto *head_p){
+    printf(ROXO"- - - - - - Remover Cliente - - - - - -\n\n"BRANCO);
+    printf("Digite o cpf do cliente:\n");
+
+    char cpf[12];
+    scanf(" %[^\n]", cpf);
+    cliente *cliente_removido = buscar_cliente(*head_c, cpf);
+    remover_clientes(head_c, cliente_removido);
+    
+    return; 
+}
+
 void menu_buscar_cliente(cliente *head_c, produto *head_p){
-    printf("- - - - - - Buscar Cliente - - - - - -\n\n");
+    printf(ROXO"- - - - - - Buscar Cliente - - - - - -\n\n"BRANCO);
     printf("Digite o cpf do cliente:\n");
 
     char cpf[12];
@@ -87,26 +99,15 @@ void menu_buscar_cliente(cliente *head_c, produto *head_p){
     printf("Email: %s\n", temp_cliente -> email);
     printf("Data de nascimento: %hd/%hd/%d\n", temp_cliente -> data_nascimento -> dia, temp_cliente -> data_nascimento -> mes, temp_cliente -> data_nascimento -> ano);
 
-    printf("Pressione qualquer tecla para voltar...");
+    printf("\nTecle Enter para voltar...");
     while (getchar() != '\n'); getchar();
-    //system("cls");
+    system("cls");
     return;  
-}
-
-void menu_remover_cliente(cliente **head_c, produto *head_p){
-    printf("- - - - - - Remover Cliente - - - - - -\n\n");
-    printf("Digite o cpf do cliente:\n");
-
-    char cpf[12];
-    scanf(" %[^\n]", cpf);
-    cliente *cliente_removido = buscar_cliente(*head_c, cpf);
-    remover_clientes(head_c, cliente_removido);
-    return; 
 }
 
 void menu_editar_cliente(cliente *head_c, produto *head_p){
 
-    printf("- - - - - - Editar Cliente - - - - - -\n\n");
+    printf(ROXO"- - - - - - Editar Cliente - - - - - -\n\n"BRANCO);
     printf("Digite o cpf do cliente a ser editado:\n");
 
     char cpf[12];
@@ -131,6 +132,7 @@ void menu_editar_cliente(cliente *head_c, produto *head_p){
         printf("Digite a opcao desejada:\n");
         scanf(" %d", &opcao);
         while(getchar() != '\n');
+
         switch(opcao){
             case 1:
                 printf("Qual o novo nome?\n");
@@ -159,16 +161,21 @@ void menu_editar_cliente(cliente *head_c, produto *head_p){
                 temp_cliente -> data_nascimento-> ano = ano;
                 break;
             case 6:
+                system("cls");
                 return;
             default:
                 system("cls");
-                printf(VERDE"Opcao invalida! Digite novamente.\n\n"BRANCO);
+                printf(VERMELHO"Opcao invalida! Digite novamente.\n\n"BRANCO);
                 break;
         } 
     }
 
     editar_cliente(temp_cliente, temp_cliente -> nome, temp_cliente -> cpf, temp_cliente -> telefone, temp_cliente -> email, temp_cliente -> data_nascimento, opcao);
-    //system("cls");
+    system("cls");
+    printf(VERDE "Cliente editado com sucesso!\n\n" BRANCO);
+    printf("Tecle Enter para voltar...\n");
+    while (getchar() != '\n');
+    getchar();
     return;  
 }
 
