@@ -1,7 +1,5 @@
 #include "backend.h"
 
-#include "backend.h"
-
 void adicionar_carrinho(cliente *cliente_atual, produto *head_p, char *id, int qtd){
     produto *achar_produto = head_p;
     if(qtd <= 0 ) return;
@@ -26,7 +24,6 @@ void adicionar_carrinho(cliente *cliente_atual, produto *head_p, char *id, int q
     while(item_ja_existe != NULL){
         if(item_ja_existe->produto == achar_produto){
             item_ja_existe->qtd += qtd;
-            achar_produto->qtd -= qtd;
             printf(VERDE "Produto adicionado ao carrinho com sucesso!\n" BRANCO);
             return;
         }
@@ -40,22 +37,34 @@ void adicionar_carrinho(cliente *cliente_atual, produto *head_p, char *id, int q
     novo_item->prox = cliente_atual->carrinho->itens;
     cliente_atual->carrinho->itens = novo_item;
 
-    achar_produto->qtd -= qtd;
     printf(VERDE "Produto adicionado ao carrinho com sucesso!\n" BRANCO);
 }
 
 void listar_itens_carrinho(cliente *cliente_atual, produto *head_p){
+
     itemcarrinho *item = cliente_atual->carrinho->itens;
+    float total = 0;
 
     if(item == NULL){
         printf(VERMELHO"Carrinho vazio.\n"BRANCO);
         return;
+
     }
+
+    item = cliente_atual->carrinho->itens;
     while(item != NULL){
-        printf("- COD: %s | Qtd: %hd | Produto: %s | Preco un: %.2lf | Total: %.2lf\n", 
-            item->produto->id, item->qtd , item->produto->nome , item->produto->preco, (item->produto->preco * item->qtd));
+        total += item->produto->preco * item->qtd;
         item = item->prox;
     }
+
+    item = cliente_atual->carrinho->itens;
+    while(item != NULL){
+        printf("- COD: %s | Qtd: %hd | Produto: %s | Preco un: %.2lf\n", 
+            item->produto->id, item->qtd , item->produto->nome , item->produto->preco);
+        item = item->prox;
+    }
+    
+    printf("| Total: %.2lf \n\n |", total);
     return;
 }
 
@@ -82,9 +91,8 @@ void retirar_carrinho(cliente *cliente_atual, produto *head_p, char *id, int qtd
         if(atual->produto == achar_produto){
             if(atual->qtd > qtd){
                 atual->qtd -= qtd;
-                achar_produto->qtd += qtd;
+
             } else {
-                achar_produto->qtd += atual->qtd; 
                 if(anterior == NULL){
                     cliente_atual->carrinho->itens = atual->prox;
                 } else {

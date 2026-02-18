@@ -26,7 +26,8 @@ void menu_modo_compra(cliente *head_c, produto *head_p){
             printf(" 1 - Adicionar produto no carrinho\n");
             printf(" 2 - Mostrar carrinho\n");
             printf(" 3 - Remover produto do carrinho\n");
-            printf(" 4 - Finalizar/Voltar\n");
+            printf(" 4 - Voltar ao menu principal\n");
+            printf(" 5 - Finalizar Compra\n");
             printf("Digite uma opcao: \n");
             scanf(" %d", &opcao);
             while(getchar() != '\n');
@@ -47,6 +48,10 @@ void menu_modo_compra(cliente *head_c, produto *head_p){
                 break;
             case 4:
                 system("cls");
+                return;
+            case 5:
+                system("cls");
+                finalizar_compra(encontrado, head_p);
                 return;
             default:
                 system("cls");
@@ -138,4 +143,49 @@ void menu_retirar_carrinho(cliente *cliente_atual, produto *head_p){
     
     system("cls");
     return;
+}
+void finalizar_compra(cliente *cliente_atual, produto *head_p){
+
+
+    itemcarrinho *itens = cliente_atual->carrinho->itens;
+    char cpf_compra[12];
+
+    printf(" =============================== \n");
+    printf(VERDE" |     FINALIZANDO COMPRA      |\n"BRANCO);
+    printf(" =============================== \n");
+
+    printf("\n Seu Carrinho: \n\n");
+
+    listar_itens_carrinho(cliente_atual, head_p);
+
+    itemcarrinho *temp = itens;
+
+    while(temp != NULL){
+        if(temp->produto->qtd < temp->qtd){
+            printf("Estoque insuficiente para: %s\n", temp->produto->nome);
+            enter();
+            return;
+        }
+        temp = temp->prox;
+    }
+    printf("Pressione ENTER para confirmar compra\n");
+    while(getchar() != '\n');
+    getchar();
+    system("cls");
+
+    while(itens != NULL){
+        itens->produto->qtd -= itens->qtd;
+        itens = itens->prox;
+    }
+
+    itens = cliente_atual->carrinho->itens;
+
+    while(itens != NULL){
+        itemcarrinho *prox = itens->prox;
+        free(itens);
+        itens = prox;
+    }
+    cliente_atual->carrinho->itens = NULL;
+    printf(VERDE" Compra finalizada com sucesso!\n"BRANCO);
+
 }
