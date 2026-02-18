@@ -1,10 +1,7 @@
 
-# Gerenciador_Notas
-Sistema de gerenciamento de notas acadêmicas desenvolvido em C. 
-
 # Trabalho Prático — Listas Encadeadas em C
 
-**CRUD de Clientes e Produtos**
+**CRUD de Clientes e Produtos** trabalho aprimorado da disciplina de Estrutura de Dados.
 
 ## Descrição
 
